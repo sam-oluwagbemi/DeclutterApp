@@ -1,11 +1,12 @@
-import Router from 'router'
-import {createProduct, getuserProducts, getAllProducts, getAProduct, editProduct, deleteProduct, getByqueryParams} from "../controllers/productAPIs/barrel"
+import {Router} from 'express'
+import {createCartItem, getCartItems, editCartItem, deleteCartItem} from "../controllers/cartAPIs/cartController"
 import authMiddleware from '../middlewares/authMiddleware'
 
-export const productRouter = Router()
+export const cartRouter = Router()
 
-productRouter
-  .post('/product/create', authMiddleware, createProduct) //POST REQ
+cartRouter
+  .post('/cart/create/:productId/:price', authMiddleware, createCartItem) //CART
+ 
   .get('/products/:userId', getuserProducts) //GET REQ
   .get('/products', getAllProducts) //GET REQ
   .get('/product/:id', getAProduct) //GET REQ

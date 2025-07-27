@@ -1,10 +1,6 @@
-const Router = require('router')
-const {login} = require("../controllers/authController")
+import Router from 'router'
+import {login} from "../controllers/authAPIs/loginUser"
 
-const authRouter = Router()
-
+export const authRouter = Router()
 authRouter
   .post('/user/login', login) //POST REQ
-   
-
-module.exports = authRouter
