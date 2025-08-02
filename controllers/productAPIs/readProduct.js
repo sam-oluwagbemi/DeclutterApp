@@ -1,8 +1,9 @@
 import {Product} from "../../schemas/productSchema.js"
 
 export const getuserProducts = async (req, res) => {
-    try {
-      const products = await Product.find({userId: user._id})
+  const {userId} = req.params
+  try {
+      const products = await Product.find({userId})
     res.status(200).json(products)
   } catch (error) {
     res.status(500).json(error)

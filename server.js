@@ -1,10 +1,10 @@
 import express from 'express'
-import {connectdb} from "./dbconnect/mongodb.js"
+import cookieParser from 'cookie-parser'
 import {userRouter} from "./routes/userRoutes.js"
 import {authRouter} from "./routes/authRoutes.js"
 import {cartRouter} from "./routes/cartRoutes.js"
-import cookieParser from 'cookie-parser'
 import {productRouter} from './routes/productRoutes.js'
+import {connectdb} from "./dbconnect/mongodb.js"
 import dotenv from 'dotenv'
 import cors from 'cors'
 
