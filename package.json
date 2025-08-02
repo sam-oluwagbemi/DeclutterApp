@@ -21,6 +21,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.16.0",
     "mongoose": "^8.15.1",
+    "node-cron": "^4.2.1",
     "parser": "^0.1.4"
   },
   "devDependencies": {

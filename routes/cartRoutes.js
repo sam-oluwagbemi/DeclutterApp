@@ -1,15 +1,11 @@
 import {Router} from 'express'
-import {createCartItem, getCartItems, editCartItem, deleteCartItem} from "../controllers/cartAPIs/cartController"
-import authMiddleware from '../middlewares/authMiddleware'
+import {createCartItem, getCartItems, editCartItem, deleteCartItems} from "../controllers/cartAPIs/cartController.js"
+import {authMiddleware} from "../middlewares/authMiddleware.js"
 
 export const cartRouter = Router()
 
 cartRouter
-  .post('/cart/create/:productId/:price', authMiddleware, createCartItem) //CART
- 
-  .get('/products/:userId', getuserProducts) //GET REQ
-  .get('/products', getAllProducts) //GET REQ
-  .get('/product/:id', getAProduct) //GET REQ
-  .get('/productByQuery', getByqueryParams)
-  .put('/product/edit', editProduct) //PUT REQ
-  .delete('/product/delete', deleteProduct) //DELETE REQ 
+  .post('/cart/create/:productId/', authMiddleware, createCartItem) //CART
+  .get('/cart', authMiddleware, getCartItems) //GET REQ
+  .put('/cart/update', authMiddleware, editCartItem) //PUT REQ
+  .delete('/cart/items/delete', authMiddleware, deleteCartItems) //DELETE REQ 

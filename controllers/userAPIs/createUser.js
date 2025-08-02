@@ -1,4 +1,4 @@
-import User from "../schemas/userSchema"
+import { User } from '../../schemas/userSchema.js'
 import bcrypt from "bcrypt"
 
 export const createUser = async (req, res) => {

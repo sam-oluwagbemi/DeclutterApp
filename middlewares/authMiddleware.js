@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import User from "../schemas/userSchema"
+import { User } from "../schemas/userSchema.js" 
 
 export const authMiddleware = async (req, res, next) => {
   const accessToken = req.cookies.accessToken

@@ -1,4 +1,4 @@
-import User from "../schemas/userSchema"
+import { User } from '../../schemas/userSchema.js'
 
 export const editProfile = async (req, res) => {
   const {id} = req.params

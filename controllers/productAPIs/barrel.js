@@ -1,4 +1,4 @@
-export * from './createProduct'
-export {getuserProducts, getAllProducts, getAProduct, getByqueryParams} from './readProduct'
-export * from './updateProduct'
-export * from './deleteProduct'
+export * from './createProduct.js'
+export {getuserProducts, getAllProducts, getAProduct, getByqueryParams} from './readProduct.js'
+export * from './updateProduct.js'
+export * from './deleteProduct.js'

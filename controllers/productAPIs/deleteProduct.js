@@ -1,4 +1,4 @@
-import Product from "../../schemas/productSchema"
+import {Product} from "../../schemas/productSchema.js"
 
 export const deleteProduct = async (req, res) => {
   const {id} = req.params

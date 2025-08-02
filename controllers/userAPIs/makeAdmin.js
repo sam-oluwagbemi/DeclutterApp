@@ -1,11 +1,12 @@
-import User from "../../schemas/userSchema"
-
-export const makeAdmin = async (req, res) => {
-  const chiefAdmin = req.
-}
+// import { User } from '../../schemas/userSchema.js'
 
 
+// export const makeAdmin = async (req, res) => {
+//   const chiefAdmin = req.
+// }
 
 
 
-export default makeAdmin
+
+
+// export default makeAdmin

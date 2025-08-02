@@ -1,4 +1,4 @@
-import Product from "../../schemas/productSchema"
+import {Product} from "../../schemas/productSchema.js"
 
 export const getuserProducts = async (req, res) => {
     try {

@@ -1,6 +1,6 @@
 import Router from 'router'
-import {createProduct, getuserProducts, getAllProducts, getAProduct, editProduct, deleteProduct, getByqueryParams} from "../controllers/productAPIs/barrel"
-import authMiddleware from '../middlewares/authMiddleware'
+import {createProduct, getuserProducts, getAllProducts, getAProduct, editProduct, deleteProduct, getByqueryParams} from "../controllers/productAPIs/barrel.js"
+import {authMiddleware} from "../middlewares/authMiddleware.js"
 
 export const productRouter = Router()
 
