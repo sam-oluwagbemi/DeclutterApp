@@ -1,5 +1,7 @@
 import { User } from '../../schemas/userSchema.js'
 import bcrypt from "bcrypt"
+import {generateOTP} from '../../utils/generateOTP.js'
+import {sendMail} from '../../utils/sendMail.js'
 
 export const createUser = async (req, res) => {
   const {userName, email, password} = req.body //Request from the body
@@ -24,6 +26,24 @@ export const createUser = async (req, res) => {
     
     const newUser = new User({...req.body, password:hashedPassword})
     await newUser.save()
+
+    //send email to new user
+    try {
+    const mailObj = {
+      mailFrom: `Declutter ${process.env.EMAIL_USER}`,
+      mailTo: email,
+      subject: 'Welcome to Declutter App',
+      body: `
+        <p>Welcome to the Declutter, <strong>${userName}</Strong> <p>
+        <p>You can proceed to post your items for sale</p>
+        `
+    }
+    const info = await sendMail (mailObj)
+
+  } catch (error) {
+    console.log(error)
+  }
+
     res.status(201).json({message: "New User created Successfully"})
   } catch (error) {
     res.status(500).json(error)
