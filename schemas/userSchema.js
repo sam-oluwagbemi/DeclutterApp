@@ -15,7 +15,7 @@ export const userSchema = new mongoose.Schema({
     }, 
     otp: String,
     otpExpires: Date,
-    userVerified: {type: Boolean, default: false},
+    verified: {type: Boolean, default: false},
     lastOtpSentAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,

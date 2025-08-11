@@ -4,6 +4,7 @@ import {userRouter} from "./routes/userRoutes.js"
 import {authRouter} from "./routes/authRoutes.js"
 import {cartRouter} from "./routes/cartRoutes.js"
 import {productRouter} from './routes/productRoutes.js'
+import {uploadFileRouter} from './routes/uploadFileRouter.js'
 import {connectdb} from "./dbconnect/mongodb.js"
 import dotenv from 'dotenv'
 import cors from 'cors'
@@ -23,7 +24,8 @@ app.use(cookieParser())
 app.use('/api', userRouter)
 app.use('/api', authRouter)
 app.use('/api', productRouter)
-app.use('api', cartRouter)
+app.use('/api', cartRouter)
+app.use('/api', uploadFileRouter)
 
 const port = process.env.PORT 
 
