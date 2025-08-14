@@ -8,11 +8,16 @@ import {uploadFileRouter} from './routes/uploadFileRouter.js'
 import {connectdb} from "./dbconnect/mongodb.js"
 import dotenv from 'dotenv'
 import cors from 'cors'
+import {otpRouter} from './routes/otpRoutes.js'
+import {startCleanup} from './cronJobs/startCleanup.js'
+import {sendMailReminder} from './cronJobs/sendMailReminder.js'
 
 dotenv.config()
 connectdb()
 
 const app = express()
+startCleanup()
+sendMailReminder()
 
 //MIDDLEWARE
 app.use(cors())
@@ -25,6 +30,7 @@ app.use('/api', userRouter)
 app.use('/api', authRouter)
 app.use('/api', productRouter)
 app.use('/api', cartRouter)
+app.use('/api', otpRouter)
 app.use('/api', uploadFileRouter)
 
 const port = process.env.PORT 

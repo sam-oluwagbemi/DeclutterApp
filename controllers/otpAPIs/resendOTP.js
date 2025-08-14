@@ -1,10 +1,11 @@
-import { User } from "../../schemas/userSchema";
-import { generateOTP, sendMail } from "../../utils/sendMail";
+import {User} from "../../schemas/userSchema.js";
+import {sendMail} from "../../utils/sendMail.js";
+import { generateOTP } from "../../utils/generateOTP.js";
 
 export const resendOTP = async (req, res) => {
-  const {gmail} = req.body
+  const {email} = req.body
   try {
-    const user = await User.findOne({gmail})
+    const user = await User.findOne({email})
     const {otp, otpExpires} = generateOTP()
     const time = Date.now()
 
@@ -13,7 +14,7 @@ export const resendOTP = async (req, res) => {
       return
     }
 
-    if (user.isVerified)
+    if (user.verified)
       return res.status(400).json({message: "OTP is already verified"})
     if (time - user.lastOtpSentAt < 2 * 60 * 1000)
       return res.status(400).json({message: "wait for 2 minutes before resending OTP"})
@@ -24,14 +25,14 @@ export const resendOTP = async (req, res) => {
     await user.save()
 
   await  sendMail({
-    mailFrom: `${process.env.EMAIL_USER}`,
-    mailTo: gmail,
+    mailFrom: `Declutter ${process.env.EMAIL_USER}`,
+    mailTo: email,
     subject: 'Verify OTP',
     body: `
     <p> Here is your OTP ${otp}, proceed to verify </p>
     `
   })
-  res.status(200).json({message: "OTP is resent successfully"})
+  res.status(200).json({message: "OTP has been resent successfully"})
   } catch (error) {
     console.log(error)
   }  
