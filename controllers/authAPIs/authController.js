@@ -55,3 +55,12 @@ try {
   }
   }
 }
+
+export const logoutUser = async (req, res) => {
+  try {
+    res.clearCookie('token', {httpOnly: true, sameSite: 'strict'});
+  return res.status(200).json({message: "You have logged out"})
+  } catch (error) {
+    console.log(error)
+  }
+}
