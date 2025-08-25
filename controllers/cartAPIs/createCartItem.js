@@ -17,6 +17,12 @@ export const createCartItem = async (req, res) => {
     let cart = await Cart.findOne({userId})
 
     if (!cart) {
+
+      const quantity = 1
+      const price = product.price
+      const totalItemPrice = price * quantity
+      const totalCartPrice = totalItemPrice
+      
       cart = new Cart({
           userId, 
           products: [{

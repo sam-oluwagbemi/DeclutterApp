@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import {createCartItem, getCartItems, editCartItem, deleteCartItems} from "../controllers/cartAPIs/barrel.js"
+import {createCartItem, getCartItems, editCartItem, deleteCartItems, removeFromCart} from "../controllers/cartAPIs/barrel.js"
 import {authMiddleware} from "../middlewares/authMiddleware.js"
 
 export const cartRouter = Router()
@@ -9,3 +9,4 @@ cartRouter
   .get('/cart', authMiddleware, getCartItems) //GET REQ
   .put('/cart/update/:cartId', authMiddleware, editCartItem) //PUT REQ
   .delete('/cart/delete/:cartId', authMiddleware, deleteCartItems) //DELETE REQ 
+  .delete('/cart/remove/:productId', authMiddleware, removeFromCart)
